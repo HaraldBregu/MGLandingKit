@@ -24,3 +24,7 @@
 //
 
 import Foundation
+
+public protocol MGLandingDelegate {
+    
+}

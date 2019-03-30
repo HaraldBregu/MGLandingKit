@@ -24,3 +24,12 @@
 //
 
 import Foundation
+
+public struct MGLandingData {
+    public var title:String!
+    public var description:String!
+    public var thumbUrl:String!
+    public init() {
+        
+    }
+}

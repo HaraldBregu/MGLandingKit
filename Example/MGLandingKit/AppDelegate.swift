@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import MGLandingKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var landing:MGLanding!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        landing = MGLanding(dataSource: DataSource(), delegate: Delegate())
+        window?.rootViewController = landing.controller
+        window?.makeKeyAndVisible()
         return true
     }
 
@@ -41,6 +45,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
 
+class DataSource: MGLandingDataSource {
+    
+    var navTitle: String {
+        return "Landing"
+    }
+    
+    var title: String {
+        return "Scalable multipurpose component based iOS framework"
+    }
+    
+    var subTitle: String {
+        return "Developers can't start always from scratch developing apps. With MegaGeneral developers can get almost all tools and softwares they need to pubblish an app."
+    }
+    
+    var headerIcon: UIImage? {
+        return nil
+    }
+    
+    var dataList: [MGLandingData] {
+        var megaitems:[MGLandingData] = []
+        
+        var itemFeed = MGLandingData()
+        itemFeed.title = "mg.megageneral.componentcollection.item.one"//.localized
+        itemFeed.thumbUrl = "https://siliconcanals.nl/wp-content/uploads/2018/05/tnw-.jpg"
+        megaitems.append(itemFeed)
+        
+        var item2 = MGLandingData()
+        item2.title = "mg.megageneral.componentcollection.item.two"//.localized
+        item2.thumbUrl = "https://myfacemood.com/wp-content/uploads/2016/12/BitTorrent-Video-Streaming-per-iPhone.png"
+        megaitems.append(item2)
+        
+        var item4 = MGLandingData()
+        item4.title = "mg.megageneral.componentcollection.item.three"//.localized
+        item4.thumbUrl = "https://r7h9p6s7.stackpathcdn.com/wp-content/uploads/2007/11/south_africa_commercial_radio_stations.jpg"
+        megaitems.append(item4)
+        
+        var itemWeb = MGLandingData()
+        itemWeb.title = "mg.megageneral.componentcollection.item.four"//.localized
+        itemWeb.thumbUrl = "https://clarivate.com/wp-content/uploads/2017/05/antifraud-darkweb-and-cyber-intelligence-560x320.jpg"
+        megaitems.append(itemWeb)
+        
+        var itemone = MGLandingData()
+        itemone.title = "mg.megageneral.componentcollection.item.five"//.localized
+        itemone.thumbUrl = "https://snazzy-maps-cdn.azureedge.net/assets/37-lunar-landscape.png?v=20170626074350"
+        megaitems.append(itemone)
+        
+        var itemSett = MGLandingData()
+        itemSett.title = "mg.megageneral.componentcollection.item.settings"//.localized
+        itemSett.thumbUrl = "https://cdn.redmondpie.com/wp-content/uploads/2017/12/ios-12-dark-mode.png"
+        megaitems.append(itemSett)
+
+        return megaitems
+    }
+    
+    var layout: MGLandingLayout {
+        return MGLandingLayout()
+    }
+    
+}
+
+class Delegate: MGLandingDelegate {
+    
+    
+}

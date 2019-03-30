@@ -24,3 +24,54 @@
 //
 
 import Foundation
+
+public class MGLanding {
+    
+    public init(dataSource: MGLandingDataSource, delegate: MGLandingDelegate) {
+        self.dataSource = dataSource
+        self.delegate = delegate
+        self.controller = _controller
+    }
+    
+    public var controller:MGLandingController!
+    private var dataSource: MGLandingDataSource!
+    private var delegate: MGLandingDelegate!
+    
+}
+
+fileprivate let storyboardName = "MGLanding"
+fileprivate let controllerIdentifier = "MGLandingController"
+
+extension MGLanding {
+    
+    private var _controller: MGLandingController {
+        guard let controller = _storyboard.instantiateViewController(withIdentifier: controllerIdentifier) as? MGLandingController
+            else { return MGLandingController() }
+        
+        controller.title = dataSource.navTitle
+        controller.navigationItem.title = dataSource.navTitle
+        controller.landingTitle = dataSource.title
+        controller.landingSubTitle = dataSource.subTitle
+        controller.dataList = dataSource.dataList
+        controller.layout = dataSource.layout
+        
+        return controller
+    }
+    
+    private var _storyboard:UIStoryboard {
+        return UIStoryboard(name: _storyboardName, bundle: _storyboardBundle)
+    }
+    
+    private var _storyboardName:String {
+        return storyboardName
+    }
+    
+    private var _storyboardBundle:Bundle {
+        let podBundle = Bundle(for: MGLanding.self)
+        let bundleURL = podBundle.url(forResource: "MGLandingKit", withExtension: "bundle")
+        let bundle = Bundle(url: bundleURL!)!
+        return bundle
+    }
+    
+}
+

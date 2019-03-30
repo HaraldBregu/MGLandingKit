@@ -24,3 +24,15 @@
 //
 
 import Foundation
+
+public class MGLandingLayout {
+    public var navBackgroundColor:UIColor!
+    public var navTintColor:UIColor!
+    public var backgroundColor:UIColor!
+    public var tintColor:UIColor!
+    public var font:UIFont!
+    
+    public init() {
+        
+    }
+}

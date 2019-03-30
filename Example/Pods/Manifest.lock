@@ -1,0 +1,26 @@
+PODS:
+  - MGLandingKit (0.0.1):
+    - SDWebImage
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
+
+DEPENDENCIES:
+  - MGLandingKit (from `../`)
+  - SDWebImage
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  MGLandingKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MGLandingKit: f782a989e792b200e11cb82edfd1330fdeb3d076
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+
+PODFILE CHECKSUM: 81c2c3a350e4d4fd8bdc3f1fb6a722580a2a6852
+
+COCOAPODS: 1.6.1

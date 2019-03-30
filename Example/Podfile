@@ -2,10 +2,6 @@ use_frameworks!
 
 target 'MGLandingKit_Example' do
   pod 'MGLandingKit', :path => '../'
+  pod 'SDWebImage'
 
-  target 'MGLandingKit_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
