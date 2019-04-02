@@ -39,9 +39,6 @@ public class MGLanding {
     
 }
 
-fileprivate let storyboardName = "MGLanding"
-fileprivate let controllerIdentifier = "MGLandingController"
-
 extension MGLanding {
     
     private var _controller: MGLandingController {
@@ -59,19 +56,19 @@ extension MGLanding {
     }
     
     private var _storyboard:UIStoryboard {
-        return UIStoryboard(name: _storyboardName, bundle: _storyboardBundle)
+        return UIStoryboard(name: storyboardName, bundle: _storyboardBundle)
     }
-    
-    private var _storyboardName:String {
-        return storyboardName
-    }
-    
+        
     private var _storyboardBundle:Bundle {
         let podBundle = Bundle(for: MGLanding.self)
-        let bundleURL = podBundle.url(forResource: "MGLandingKit", withExtension: "bundle")
+        let bundleURL = podBundle.url(forResource: resourceName, withExtension: resourceExtension)
         let bundle = Bundle(url: bundleURL!)!
         return bundle
     }
     
 }
 
+fileprivate let storyboardName = "MGLanding"
+fileprivate let controllerIdentifier = "MGLandingController"
+fileprivate let resourceName = "MGLandingKit"
+fileprivate let resourceExtension = "bundle"

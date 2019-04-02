@@ -26,13 +26,50 @@
 import Foundation
 
 public class MGLandingLayout {
-    public var navBackgroundColor:UIColor!
-    public var navTintColor:UIColor!
+    public var view:MGViewLayout!
+    public var navigationBar:MGNavigationBarLayout!
+    public var navigationItemMenu:MGNavigationItemLayout!
+    public var titleLabel:MGLabelLayout!
+    public var subTitleLabel:MGLabelLayout!
+    public var itemTitleLabel:MGLabelLayout!
+    public init() {
+        view = MGViewLayout()
+        navigationBar = MGNavigationBarLayout()
+        navigationItemMenu = MGNavigationItemLayout()
+        titleLabel = MGLabelLayout()
+        subTitleLabel = MGLabelLayout()
+        itemTitleLabel = MGLabelLayout()
+    }
+}
+
+public class MGViewLayout {
+    public var backgroundColor:UIColor!
+    public init() {
+        backgroundColor = #colorLiteral(red: 0.05098039216, green: 0.05098039216, blue: 0.05098039216, alpha: 1)
+    }
+}
+
+public class MGNavigationBarLayout {
     public var backgroundColor:UIColor!
     public var tintColor:UIColor!
-    public var font:UIFont!
-    
     public init() {
-        
+        backgroundColor = #colorLiteral(red: 0.05098039216, green: 0.05098039216, blue: 0.05098039216, alpha: 1)
+        tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+}
+
+public class MGNavigationItemLayout {
+    public var image:UIImage!
+    public init() {
+        image = UIImage()
+    }
+}
+
+public class MGLabelLayout {
+    public var font: UIFont!
+    public var tintColor: UIColor!
+    public init() {
+        font = UIFont()
+        tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
 }

@@ -42,15 +42,16 @@ public class MGLandingController: UIViewController {
     var landingSubTitle:String!
 
     var didTapMenu:((MGLandingController) -> ()) = { _ in }
+   
     var layout:MGLandingLayout!
-
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
-        //view.backgroundColor = MGGeneral.NavBar.Theme.dark
+                
+        view.backgroundColor = layout.view.backgroundColor
         navigationController?.navigationBar.isTranslucent = false
-        //navigationController?.navigationBar.barTintColor = MGGeneral.NavBar.Theme.dark
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barTintColor = layout.navigationBar.backgroundColor
+        navigationController?.navigationBar.tintColor = layout.navigationBar.tintColor
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -58,10 +59,14 @@ public class MGLandingController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         titleLabel.text = landingTitle
+        titleLabel.tintColor = layout.titleLabel.tintColor
+        titleLabel.font = layout.titleLabel.font
+
         descriptionLabel.text = landingSubTitle
-//        let icon: IoniconsType = IoniconsType.naviconRound
-//        let image = UIImage(icon: .ionicons(icon), size: CGSize(width: 34, height: 34), textColor: .white, backgroundColor: .clear)
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(revealMenuViewcontroller))
+        descriptionLabel.tintColor = layout.subTitleLabel.tintColor
+        descriptionLabel.font = layout.subTitleLabel.font
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: layout.navigationItemMenu.image, style: .plain, target: self, action: #selector(navigationItemMenuAction))
         
         userImageView.layer.cornerRadius = 3.0
         userImageView.sd_setShowActivityIndicatorView(true)
@@ -114,6 +119,9 @@ public class MGLandingController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    @objc private func navigationItemMenuAction() {
+        
+    }
 }
 
 
@@ -132,6 +140,9 @@ extension MGLandingController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.titleLabel.text = item.title
 //        cell.titleLabel.font = MGGeneral.Font.regular(size: 12.0)
 
+        cell.titleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+
+        
         cell.backgroundImageView.sd_setShowActivityIndicatorView(true)
         cell.backgroundImageView.sd_setIndicatorStyle(.white)
         cell.backgroundImageView.sd_setImage(with: URL(string: item.thumbUrl))
@@ -140,7 +151,9 @@ extension MGLandingController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: collectionView.bounds.height)
+        let height = collectionView.bounds.height
+        let width = height * 1.8
+        return CGSize(width: width, height: height)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

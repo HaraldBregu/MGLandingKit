@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         landing = MGLanding(dataSource: DataSource(), delegate: Delegate())
-        window?.rootViewController = landing.controller
+        window?.rootViewController = UINavigationController(rootViewController: landing.controller)
         window?.makeKeyAndVisible()
         return true
     }
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 class DataSource: MGLandingDataSource {
     
     var navTitle: String {
-        return "Landing"
+        return ""
     }
     
     var title: String {
@@ -102,7 +102,28 @@ class DataSource: MGLandingDataSource {
     }
     
     var layout: MGLandingLayout {
-        return MGLandingLayout()
+        let layout = MGLandingLayout()
+        
+        layout.navigationItemMenu.image = #imageLiteral(resourceName: "image-1")
+
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            layout.titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 35)
+            layout.subTitleLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 18)
+            
+        
+        }
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            layout.titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 65)
+            layout.subTitleLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 35)
+        }
+        
+
+//        let viewLayout = MGViewLayout()
+//        viewLayout.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+//        layout.view = viewLayout
+//        layout.view.backgroundColor = #colorLiteral(red: 0.9185360074, green: 0.2080384493, blue: 0.2899147272, alpha: 1)
+        return layout
     }
     
 }
