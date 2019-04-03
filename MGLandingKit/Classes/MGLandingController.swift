@@ -144,11 +144,7 @@ extension MGLandingController: UICollectionViewDelegate, UICollectionViewDataSou
         let item = items[indexPath.item]
 
         cell.titleLabel.text = item.title
-//        cell.titleLabel.font = MGGeneral.Font.regular(size: 12.0)
-
-        cell.titleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
-
-        
+        cell.titleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 20)        
         cell.backgroundImageView.sd_setShowActivityIndicatorView(true)
         cell.backgroundImageView.sd_setIndicatorStyle(.white)
         cell.backgroundImageView.sd_setImage(with: URL(string: item.thumbUrl))

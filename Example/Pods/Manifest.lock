@@ -1,6 +1,6 @@
 PODS:
   - FontBlaster (4.1.0)
-  - MGLandingKit (0.0.2):
+  - MGLandingKit (0.0.3):
     - SDWebImage
   - MGTemplateKit (0.1.8):
     - FontBlaster
@@ -13,7 +13,7 @@ PODS:
 DEPENDENCIES:
   - MGLandingKit (from `../`)
   - "MGTemplateKit (from `https://haraldbregu:4a4d1162147e80549f22cafb59060bdf59c4934a@github.com/HaraldBregu/MGTemplateKit.git`)"
-  - SDWebImage
+  - SDWebImage (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -34,11 +34,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   FontBlaster: 127aa66419478d1c62926c7fdb39841633344a45
-  MGLandingKit: 53f8fecb85af1a3417035868e1db7aef63af5c75
+  MGLandingKit: 23aea861ea87145c822d7beb6ca7f8721b449e71
   MGTemplateKit: 59eb00bb69ae7c313203351de312fab4894040d9
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   UIColor_Hex_Swift: bc07fc197421ee896b9ed6dcfa2054b7fbf75145
 
-PODFILE CHECKSUM: 3813082edffefdcef19c438005107568910f37b9
+PODFILE CHECKSUM: d261dfe7b5d161b41cc7a806b08486ac2dbddf19
 
 COCOAPODS: 1.6.1

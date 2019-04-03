@@ -12,6 +12,6 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
       'MGLandingKit' => ['MGLandingKit/Assets/*.{png,lproj,storyboard}']
   }
-  s.dependency 'SDWebImage'
+  s.dependency 'SDWebImage', '~> 4.0'
   s.swift_version = '4.2'
 end
