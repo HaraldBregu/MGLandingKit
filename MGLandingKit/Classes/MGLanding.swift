@@ -45,11 +45,8 @@ extension MGLanding {
         guard let controller = _storyboard.instantiateViewController(withIdentifier: controllerIdentifier) as? MGLandingController
             else { return MGLandingController() }
         
-        controller.title = dataSource.navTitle
-        controller.navigationItem.title = dataSource.navTitle
-        controller.landingTitle = dataSource.title
-        controller.landingSubTitle = dataSource.subTitle
-        controller.dataList = dataSource.dataList
+        controller.data = dataSource.data
+        controller.items = dataSource.items
         controller.layout = dataSource.layout
         
         return controller

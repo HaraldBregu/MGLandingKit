@@ -8,6 +8,7 @@
 
 import UIKit
 import MGLandingKit
+import MGTemplateKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,52 +50,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 class DataSource: MGLandingDataSource {
     
-    var navTitle: String {
-        return ""
-    }
-    
-    var title: String {
-        return "Scalable multipurpose component based iOS framework"
-    }
-    
-    var subTitle: String {
-        return "Developers can't start always from scratch developing apps. With MegaGeneral developers can get almost all tools and softwares they need to pubblish an app."
-    }
-    
-    var headerIcon: UIImage? {
-        return nil
-    }
-    
-    var dataList: [MGLandingData] {
-        var megaitems:[MGLandingData] = []
+    var data: MGLandingData {
+        var landingData = MGLandingData()
         
-        var itemFeed = MGLandingData()
-        itemFeed.title = "mg.megageneral.componentcollection.item.one"//.localized
+        landingData.title = "Scalable multipurpose component based iOS framework"
+        landingData.subTitle = "MegaGeneral is a scalable multipurpose component based iOS framework. You can start develop many awesome apps from MegaGeneral framework. You can use a big sets of icons, fonts, and change dark theme with your personal custom theme."
+
+        return landingData
+    }
+    
+    var items: [MGLandingItemData] {
+        var megaitems:[MGLandingItemData] = []
+        
+        var itemFeed = MGLandingItemData()
+        itemFeed.title = "mg.megageneral.componentcollection.item.one".localized
         itemFeed.thumbUrl = "https://siliconcanals.nl/wp-content/uploads/2018/05/tnw-.jpg"
         megaitems.append(itemFeed)
         
-        var item2 = MGLandingData()
-        item2.title = "mg.megageneral.componentcollection.item.two"//.localized
+        var item2 = MGLandingItemData()
+        item2.title = "mg.megageneral.componentcollection.item.two".localized
         item2.thumbUrl = "https://myfacemood.com/wp-content/uploads/2016/12/BitTorrent-Video-Streaming-per-iPhone.png"
         megaitems.append(item2)
         
-        var item4 = MGLandingData()
-        item4.title = "mg.megageneral.componentcollection.item.three"//.localized
+        var item4 = MGLandingItemData()
+        item4.title = "mg.megageneral.componentcollection.item.three".localized
         item4.thumbUrl = "https://r7h9p6s7.stackpathcdn.com/wp-content/uploads/2007/11/south_africa_commercial_radio_stations.jpg"
         megaitems.append(item4)
         
-        var itemWeb = MGLandingData()
-        itemWeb.title = "mg.megageneral.componentcollection.item.four"//.localized
+        var itemWeb = MGLandingItemData()
+        itemWeb.title = "mg.megageneral.componentcollection.item.four".localized
         itemWeb.thumbUrl = "https://clarivate.com/wp-content/uploads/2017/05/antifraud-darkweb-and-cyber-intelligence-560x320.jpg"
         megaitems.append(itemWeb)
         
-        var itemone = MGLandingData()
-        itemone.title = "mg.megageneral.componentcollection.item.five"//.localized
+        var itemone = MGLandingItemData()
+        itemone.title = "mg.megageneral.componentcollection.item.five".localized
         itemone.thumbUrl = "https://snazzy-maps-cdn.azureedge.net/assets/37-lunar-landscape.png?v=20170626074350"
         megaitems.append(itemone)
         
-        var itemSett = MGLandingData()
-        itemSett.title = "mg.megageneral.componentcollection.item.settings"//.localized
+        var itemSett = MGLandingItemData()
+        itemSett.title = "mg.megageneral.componentcollection.item.settings".localized
         itemSett.thumbUrl = "https://cdn.redmondpie.com/wp-content/uploads/2017/12/ios-12-dark-mode.png"
         megaitems.append(itemSett)
 
@@ -108,21 +102,20 @@ class DataSource: MGLandingDataSource {
 
         if UIDevice.current.userInterfaceIdiom == .phone {
             layout.titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 35)
-            layout.subTitleLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 18)
-            
-        
+            layout.subTitleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 22)
+            layout.usernameLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 18)
+            layout.headlineLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 16)
+            layout.collectionTitleLabel.font = UIFont(name: "HelveticaNeue", size: 16)
         }
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             layout.titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 65)
-            layout.subTitleLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 35)
+            layout.subTitleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 25)
+            layout.usernameLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 32)
+            layout.headlineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+            layout.collectionTitleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 26)
         }
         
-
-//        let viewLayout = MGViewLayout()
-//        viewLayout.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
-//        layout.view = viewLayout
-//        layout.view.backgroundColor = #colorLiteral(red: 0.9185360074, green: 0.2080384493, blue: 0.2899147272, alpha: 1)
         return layout
     }
     
