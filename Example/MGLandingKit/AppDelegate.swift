@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         landing = MGLanding(dataSource: DataSource(), delegate: Delegate())
-        window?.rootViewController = UINavigationController(rootViewController: landing.controller)
+        window?.rootViewController = landing.initialController
         window?.makeKeyAndVisible()
         return true
     }
@@ -123,5 +123,8 @@ class DataSource: MGLandingDataSource {
 
 class Delegate: MGLandingDelegate {
     
+    func landingController(_ controller: MGLandingController, didTapMenuNavigationItem: UIBarButtonItem) {
+        
+    }
     
 }
