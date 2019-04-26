@@ -60,11 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate:MGLandingControllerDelegate, MGLandingControllerDataSource {
    
-    func landingController(_ controller: MGLandingController, didTapBarButtonItem barButtonItem: UIBarButtonItem) {
+    func controller(_ controller: UIViewController, didTapBarButtonItem barButtonItem: UIBarButtonItem) {
         print("Navigation item is: \(String(describing: barButtonItem.accessibilityIdentifier))")
     }
     
-    func leftBarButtonItems(_ controller: MGLandingController) -> [UIBarButtonItem] {
+    func leftBarButtonItems(_ controller: UIViewController) -> [UIBarButtonItem] {
         let button1 = UIBarButtonItem()
         button1.image = UIImage(icon: .fontAwesomeSolid(.bars), size: CGSize(width: 36, height: 36), textColor: .black)
         button1.style = .plain
@@ -74,4 +74,3 @@ extension AppDelegate:MGLandingControllerDelegate, MGLandingControllerDataSource
     }
     
 }
-

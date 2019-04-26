@@ -29,7 +29,7 @@ import SnapKit
 import FirebaseCore
 import GoogleMobileAds
 
-//GADBannerViewDelegate
+
 public class MGLandingController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -104,16 +104,18 @@ public class MGLandingController: UIViewController {
         componentCollectionView.backgroundColor = assets?.color.collectionView
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        
         view.addSubview(bannerView)
-        bannerView.snp.makeConstraints { (make) -> Void in
-            make.bottom.equalTo(self.view)
-            make.centerX.equalTo(self.view.center)
+        if let assets = assets, assets.data.enableAds == true, assets.data.adsUnitId.count > 0 {
+            bannerView.snp.makeConstraints { make in
+                make.bottom.equalTo(self.view)
+                make.centerX.equalTo(self.view.center)
+            }
+            bannerView.adUnitID = assets.data.adsUnitId
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+            bannerView.delegate = self
         }
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-//        bannerView.delegate = self
+        
     }
     
     public override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -121,43 +123,61 @@ public class MGLandingController: UIViewController {
     }
     
     @objc private func navigationItemMenuAction(barButtonItem: UIBarButtonItem) {
-        self.delegate.landingController(self, didTapBarButtonItem: barButtonItem)
+        self.delegate.controller(self, didTapBarButtonItem: barButtonItem)
     }
-    
-//    /// Tells the delegate an ad request loaded an ad.
-//    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-//        print("adViewDidReceiveAd")
-//    }
-//
-//    /// Tells the delegate an ad request failed.
-//    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-//        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
-//    }
-//
-//    /// Tells the delegate that a full-screen view will be presented in response
-//    /// to the user clicking on an ad.
-//    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
-//        print("adViewWillPresentScreen")
-//    }
-//
-//    /// Tells the delegate that the full-screen view will be dismissed.
-//    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
-//        print("adViewWillDismissScreen")
-//    }
-//
-//    /// Tells the delegate that the full-screen view has been dismissed.
-//    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
-//        print("adViewDidDismissScreen")
-//    }
-//
-//    /// Tells the delegate that a user click will open another app (such as
-//    /// the App Store), backgrounding the current app.
-//    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
-//        print("adViewWillLeaveApplication")
-//    }
 
 }
 
+extension MGLandingController {
+    
+    public static var instance:MGLandingController {
+        let podBundle = Bundle(for: MGLandingController.self)
+        let bundleURL = podBundle.url(forResource: resourceName, withExtension: resourceExtension)
+        let bundle = Bundle(url: bundleURL!) ?? Bundle()
+        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: controllerIdentifier) as? MGLandingController else {
+            return MGLandingController()
+        }
+        return controller
+    }
+    
+}
+
+extension MGLandingController: GADBannerViewDelegate {
+    
+    /// Tells the delegate an ad request loaded an ad.
+    public func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        //print("adViewDidReceiveAd")
+    }
+    
+    /// Tells the delegate an ad request failed.
+    public func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        //print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    public func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        //print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view will be dismissed.
+    public func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        //print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full-screen view has been dismissed.
+    public func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        //print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    public func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        //print("adViewWillLeaveApplication")
+    }
+
+}
 
 extension MGLandingController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -192,22 +212,6 @@ extension MGLandingController: UICollectionViewDelegate, UICollectionViewDataSou
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15.0
-    }
-    
-}
-
-
-extension MGLandingController {
-    
-    public static var instance:MGLandingController {
-        let podBundle = Bundle(for: MGLandingController.self)
-        let bundleURL = podBundle.url(forResource: resourceName, withExtension: resourceExtension)
-        let bundle = Bundle(url: bundleURL!) ?? Bundle()
-        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: controllerIdentifier) as? MGLandingController else {
-            return MGLandingController()
-        }
-        return controller
     }
     
 }
