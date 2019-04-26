@@ -9,24 +9,28 @@
 import UIKit
 import MGLandingKit
 import MGTemplateKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     var landingController:MGLandingController!
+    var bannerView: GADBannerView!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         MGTemplate.setup()
+        FirebaseApp.configure()
 
         landingController = MGLandingController.instance
+        landingController.assets = Asset.instance
         landingController.delegate = self
         landingController.dataSource = self
-        landingController.assets = Asset.instance
 
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
         window?.rootViewController = UINavigationController(rootViewController: landingController)
-        window?.makeKeyAndVisible()
+        window?.makeKeyAndVisible()        
         return true
     }
 

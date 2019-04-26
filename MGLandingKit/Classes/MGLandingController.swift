@@ -25,7 +25,11 @@
 
 import UIKit
 import SDWebImage
+import SnapKit
+import FirebaseCore
+import GoogleMobileAds
 
+//GADBannerViewDelegate
 public class MGLandingController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -40,6 +44,8 @@ public class MGLandingController: UIViewController {
     public var delegate:MGLandingControllerDelegate!
     public var dataSource:MGLandingControllerDataSource!
     public var assets:MGLandingAsset?
+    
+    var bannerView: GADBannerView!
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +102,18 @@ public class MGLandingController: UIViewController {
         componentCollectionView.showsVerticalScrollIndicator = false
         componentCollectionView.showsHorizontalScrollIndicator = false
         componentCollectionView.backgroundColor = assets?.color.collectionView
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        
+        view.addSubview(bannerView)
+        bannerView.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(self.view)
+            make.centerX.equalTo(self.view.center)
+        }
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+//        bannerView.delegate = self
     }
     
     public override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -105,6 +123,39 @@ public class MGLandingController: UIViewController {
     @objc private func navigationItemMenuAction(barButtonItem: UIBarButtonItem) {
         self.delegate.landingController(self, didTapBarButtonItem: barButtonItem)
     }
+    
+//    /// Tells the delegate an ad request loaded an ad.
+//    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+//        print("adViewDidReceiveAd")
+//    }
+//
+//    /// Tells the delegate an ad request failed.
+//    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+//        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+//    }
+//
+//    /// Tells the delegate that a full-screen view will be presented in response
+//    /// to the user clicking on an ad.
+//    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+//        print("adViewWillPresentScreen")
+//    }
+//
+//    /// Tells the delegate that the full-screen view will be dismissed.
+//    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+//        print("adViewWillDismissScreen")
+//    }
+//
+//    /// Tells the delegate that the full-screen view has been dismissed.
+//    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+//        print("adViewDidDismissScreen")
+//    }
+//
+//    /// Tells the delegate that a user click will open another app (such as
+//    /// the App Store), backgrounding the current app.
+//    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+//        print("adViewWillLeaveApplication")
+//    }
+
 }
 
 
@@ -157,6 +208,40 @@ extension MGLandingController {
             return MGLandingController()
         }
         return controller
+    }
+    
+}
+
+class MGLandingCollectionCell: UICollectionViewCell {
+    @IBOutlet var containerView: UIView!
+    @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var containerCoverView: UIView!
+    @IBOutlet var titleLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        containerCoverView.backgroundColor = .clear
+        let gradient = CAGradientLayer()
+        gradient.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        gradient.colors = [#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.01145699098).cgColor, #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.01).cgColor, #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7526981314).cgColor]
+        gradient.locations = [0.0, 0.6, 1.0]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradient.masksToBounds = true
+        containerCoverView.layer.addSublayer(gradient)
+        containerCoverView.layer.masksToBounds = true
+        containerCoverView.clipsToBounds = true
+        containerCoverView.layer.cornerRadius = 1.0
+        backgroundImageView.layer.masksToBounds = true
+        backgroundImageView.clipsToBounds = true
+        backgroundImageView.layer.cornerRadius = 1.0
+        containerView.layer.cornerRadius = 1.0
+        containerView.layer.masksToBounds = true
     }
     
 }

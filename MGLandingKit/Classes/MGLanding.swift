@@ -25,7 +25,6 @@
 
 import Foundation
 
-
 public struct MGLandingItemData {
     public var title:String!
     public var description:String!
