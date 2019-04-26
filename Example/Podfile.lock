@@ -50,11 +50,11 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.8.0):
     - GoogleUtilities/Logger
-  - MGLandingKit (0.1.5):
+  - MGLandingKit (0.1.6):
     - Firebase/AdMob
     - Firebase/Core
     - SDWebImage (~> 4.0)
-    - SnapKit (~> 5.0.0)
+    - SnapKit (~> 4.0.0)
   - MGTemplateKit (0.1.8):
     - FontBlaster
     - UIColor_Hex_Swift (~> 4.2.0)
@@ -66,7 +66,7 @@ PODS:
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
-  - SnapKit (5.0.0)
+  - SnapKit (4.0.1)
   - UIColor_Hex_Swift (4.2.0)
 
 DEPENDENCIES:
@@ -75,7 +75,7 @@ DEPENDENCIES:
   - MGLandingKit (from `../`)
   - "MGTemplateKit (from `https://haraldbregu:4a4d1162147e80549f22cafb59060bdf59c4934a@github.com/HaraldBregu/MGTemplateKit.git`)"
   - SDWebImage (~> 4.0)
-  - SnapKit (~> 5.0.0)
+  - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -112,13 +112,13 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: e911f5544fc6488f8372a183627a802c8bdb5e36
   GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
-  MGLandingKit: b8b3f5b9f118cd29cc1ac22c37756145a9435734
+  MGLandingKit: 6ed19351666b7c63529c5ff6bf6d8bf6eb1b5e53
   MGTemplateKit: 59eb00bb69ae7c313203351de312fab4894040d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
-  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   UIColor_Hex_Swift: bc07fc197421ee896b9ed6dcfa2054b7fbf75145
 
-PODFILE CHECKSUM: 7b4154ad0e73e474c9afdaa0a5d88f0eaa030142
+PODFILE CHECKSUM: a4210610a39bc016d113398843a9765d1cae2036
 
 COCOAPODS: 1.6.1

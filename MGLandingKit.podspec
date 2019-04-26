@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MGLandingKit'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = 'When you sit down to work, external critics aren’t'
   s.description      = 'When you sit down to work, external critics aren’t the enemy. It’s you who you must to fight against to do great fucking work. You must overcome yourself. Saul Bass on failure: Failure is built into creativity… the creative act involves this element of ‘newness’ and ‘experimentalism,’ then one must expect and accept the fucking possibility of failure.'
   s.homepage         = 'https://github.com/HaraldBregu'
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
       'MGLandingKit' => ['MGLandingKit/Assets/*.{png,lproj,storyboard}']
   }
   s.dependency 'SDWebImage', '~> 4.0'
-  s.dependency 'SnapKit', '~> 5.0.0'
+  s.dependency 'SnapKit', '~> 4.0.0'
   s.static_framework = true
   s.dependency 'Firebase/Core'
   s.dependency 'Firebase/AdMob'
