@@ -72,32 +72,40 @@ extension LandingAssetsObject {
 
         return LandingAssets(
             string: LandingString(
+                title: "",
                 navigationTitle: "",
-                title: "Scalable multipurpose component based iOS framework",
-                subTitle: "MegaGeneral is a scalable multipurpose component based iOS framework. You can start develop many awesome apps from MegaGeneral framework. You can use a big sets of icons, fonts, and change dark theme with your personal custom theme.",
-                userName: "Mega Team Builder",
-                headline: "Scalable Multipurpose iOS Framework",
-                collectionTitle: "Integrated kits"),
+                contentTitle: "Multipurpose Universal Template Framework For iOS",
+                contentSubtitle: "MegaGeneral is a scalable multipurpose component based iOS framework. You can start develop many awesome apps from MegaGeneral framework. You can use a big sets of icons, fonts, and change dark theme with your personal custom theme.",
+                contentUsername: "MegaTeamBuilder",
+                contentHeadline: "Think fast, do the right.",
+                contentCollectionTitle: "Integrated kits"),
             font: LandingFont(
-                title: (isiPad ? MGTemplate.Font(size: 65).medium : MGTemplate.Font(size: 35).medium)!,
-                subtitle: (isiPad ? MGTemplate.Font(size: 32).light : MGTemplate.Font(size: 20).light)!,
-                username: (isiPad ? MGTemplate.Font(size: 28).medium : MGTemplate.Font(size: 18).medium)!,
-                headline: (isiPad ? MGTemplate.Font(size: 22).regular : MGTemplate.Font(size: 16).regular)!,
-                collectionTitle: (isiPad ? MGTemplate.Font(size: 22).regular : MGTemplate.Font(size: 16).regular)!),
+                contentTitle: (isiPad ? MGTemplate.Font(size: 65).medium : MGTemplate.Font(size: 35).medium),
+                contentSubtitle: (isiPad ? MGTemplate.Font(size: 32).light : MGTemplate.Font(size: 20).light),
+                contentUsername: (isiPad ? MGTemplate.Font(size: 28).medium : MGTemplate.Font(size: 18).medium),
+                contentHeadline: (isiPad ? MGTemplate.Font(size: 22).regular : MGTemplate.Font(size: 16).regular),
+                contentCollectionTitle: (isiPad ? MGTemplate.Font(size: 22).regular : MGTemplate.Font(size: 16).regular),
+                collectionViewCellTitle: (isiPad ? MGTemplate.Font(size: 32).light : MGTemplate.Font(size: 20).light)),
             image: LandingImage(
-                heart: UIImage(icon: .fontAwesomeSolid(.heart), size: CGSize(width: 36, height: 36), textColor: .black)),
+                userRightImage: UIImage(icon: .fontAwesomeSolid(.heart), size: CGSize(width: 36, height: 36), textColor: .black)),
             color: LandingColor(
-                primary: .red,
-                backgroundView: .red,
-                navigationBar: .red,
-                navigationBarTint: .red,
-                collectionTitle: .red,
-                collectionView: .red),
+                navigationBar: .black,
+                navigationBarContent: .red,
+                toolBar: .black,
+                toolBarContent: .red,
+                view: .black,
+                viewContent: .yellow,
+                collectionView: .black,
+                collectionViewCell: .black,
+                collectionViewCellContent: .red,
+                collectionViewCellTitle: .red),
             data: LandingData(
                 userImageUrl: URL(string:"https://firebasestorage.googleapis.com/v0/b/megageneral-8d8a3.appspot.com/o/MGIconLight.png?alt=media&token=b8bb255f-7ede-4b54-a8c0-b3a63ad661f6")!,
                 collectionItems: megaitems,
                 enableAds: true,
-                adsUnitId: "ca-app-pub-3940256099942544/2934735716"))
+                adsUnitId: "ca-app-pub-3940256099942544/2934735716",
+                statusBarStyle: .default,
+                imageViewIndicatorStyle: .white))
     }
 }
 
@@ -110,33 +118,39 @@ struct LandingAssets:MGLandingAsset {
 }
 
 struct LandingString:MGLandingString {
-    var navigationTitle: String
     var title: String
-    var subTitle: String
-    var userName: String
-    var headline: String
-    var collectionTitle: String
+    var navigationTitle: String
+    var contentTitle: String
+    var contentSubtitle: String
+    var contentUsername: String
+    var contentHeadline: String
+    var contentCollectionTitle: String
 }
 
 struct LandingFont:MGLandingFont {
-    var title: UIFont
-    var subtitle: UIFont
-    var username: UIFont
-    var headline: UIFont
-    var collectionTitle: UIFont
+    var contentTitle: UIFont?
+    var contentSubtitle: UIFont?
+    var contentUsername: UIFont?
+    var contentHeadline: UIFont?
+    var contentCollectionTitle: UIFont?
+    var collectionViewCellTitle: UIFont?
 }
 
 struct LandingImage:MGLandingImage {
-    var heart: UIImage
+    var userRightImage: UIImage
 }
 
 struct LandingColor:MGLandingColor {
-    var primary: UIColor
-    var backgroundView: UIColor
     var navigationBar: UIColor
-    var navigationBarTint: UIColor
-    var collectionTitle: UIColor
+    var navigationBarContent: UIColor
+    var toolBar: UIColor
+    var toolBarContent: UIColor
+    var view: UIColor
+    var viewContent: UIColor
     var collectionView: UIColor
+    var collectionViewCell: UIColor
+    var collectionViewCellContent: UIColor
+    var collectionViewCellTitle: UIColor
 }
 
 struct LandingData:MGLandingData {
@@ -144,5 +158,7 @@ struct LandingData:MGLandingData {
     var collectionItems: [MGLandingItemData]
     var enableAds: Bool
     var adsUnitId: String
+    var statusBarStyle: UIStatusBarStyle
+    var imageViewIndicatorStyle: UIActivityIndicatorView.Style
 }
 

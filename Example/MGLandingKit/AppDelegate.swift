@@ -15,7 +15,6 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var landingController:MGLandingController!
-    var bannerView: GADBannerView!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -72,5 +71,15 @@ extension AppDelegate:MGLandingControllerDelegate, MGLandingControllerDataSource
         
         return [button1]
     }
+    
+    func rightBarButtonItems(_ controller: UIViewController) -> [UIBarButtonItem] {
+        let button1 = UIBarButtonItem()
+        button1.image = UIImage(icon: .fontAwesomeSolid(.americanSignLanguageInterpreting), size: CGSize(width: 36, height: 36), textColor: .black)
+        button1.style = .plain
+        button1.accessibilityIdentifier = "First"
+        
+        return [button1]
+    }
+
     
 }
