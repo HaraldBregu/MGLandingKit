@@ -87,13 +87,13 @@ extension LandingAssetsObject {
                 contentCollectionTitle: (isiPad ? MGTemplate.Font(size: 22).regular : MGTemplate.Font(size: 16).regular),
                 collectionViewCellTitle: (isiPad ? MGTemplate.Font(size: 32).light : MGTemplate.Font(size: 20).light)),
             image: LandingImage(
-                userRightImage: UIImage(icon: .fontAwesomeSolid(.heart), size: CGSize(width: 36, height: 36), textColor: .black)),
+                userRightImage: UIImage(icon: .fontAwesomeSolid(.heart), size: CGSize(width: 36, height: 36), textColor: .red)),
             color: LandingColor(
                 navigationBar: .black,
                 navigationBarContent: .red,
                 toolBar: .black,
                 toolBarContent: .red,
-                view: .black,
+                view: .brown,
                 viewContent: .yellow,
                 collectionView: .black,
                 collectionViewCell: .black,

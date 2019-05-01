@@ -112,7 +112,7 @@ public class MGLandingController: UIViewController {
 
         componentTitleLabel.text = assets?.string.contentCollectionTitle
         componentTitleLabel.textColor = assets?.color.viewContent
-        if let font = assets?.font.collectionViewCellTitle {
+        if let font = assets?.font.contentCollectionTitle {
             componentTitleLabel.font = font
         }
         componentCollectionView.showsVerticalScrollIndicator = false
