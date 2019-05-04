@@ -76,12 +76,14 @@ extension LandingAssetsObject {
                 navigationTitle: "",
                 contentTitle: "Multipurpose Universal Template Framework For iOS",
                 contentSubtitle: "MegaGeneral is a scalable multipurpose component based iOS framework. You can start develop many awesome apps from MegaGeneral framework. You can use a big sets of icons, fonts, and change dark theme with your personal custom theme.",
+                contentDescription: "MegaGeneral is a scalable multipurpose component based iOS framework. You can start develop many awesome apps from MegaGeneral framework. You can use a big sets of icons, fonts, and change dark theme with your personal custom theme.",
                 contentUsername: "MegaTeamBuilder",
                 contentHeadline: "Think fast, do the right.",
                 contentCollectionTitle: "Integrated kits"),
             font: LandingFont(
                 contentTitle: (isiPad ? MGTemplate.Font(size: 65).medium : MGTemplate.Font(size: 35).medium),
-                contentSubtitle: (isiPad ? MGTemplate.Font(size: 32).light : MGTemplate.Font(size: 20).light),
+                contentSubtitle: (isiPad ? MGTemplate.Font(size: 20).light : MGTemplate.Font(size: 13).light),
+                contentDescription: (isiPad ? MGTemplate.Font(size: 32).light : MGTemplate.Font(size: 20).light),
                 contentUsername: (isiPad ? MGTemplate.Font(size: 28).medium : MGTemplate.Font(size: 18).medium),
                 contentHeadline: (isiPad ? MGTemplate.Font(size: 22).regular : MGTemplate.Font(size: 16).regular),
                 contentCollectionTitle: (isiPad ? MGTemplate.Font(size: 22).regular : MGTemplate.Font(size: 16).regular),
@@ -95,6 +97,9 @@ extension LandingAssetsObject {
                 toolBarContent: .red,
                 view: .brown,
                 viewContent: .yellow,
+                title: .white,
+                subtitle: .gray,
+                description: .blue,
                 collectionView: .black,
                 collectionViewCell: .black,
                 collectionViewCellContent: .red,
@@ -109,7 +114,7 @@ extension LandingAssetsObject {
     }
 }
 
-struct LandingAssets:MGLandingAsset {
+struct LandingAssets: MGLandingAsset {
     var string: MGLandingString
     var font: MGLandingFont
     var image: MGLandingImage
@@ -117,36 +122,41 @@ struct LandingAssets:MGLandingAsset {
     var data: MGLandingData
 }
 
-struct LandingString:MGLandingString {
+struct LandingString: MGLandingString {
     var title: String
     var navigationTitle: String
     var contentTitle: String
     var contentSubtitle: String
+    var contentDescription: String
     var contentUsername: String
     var contentHeadline: String
     var contentCollectionTitle: String
 }
 
-struct LandingFont:MGLandingFont {
+struct LandingFont: MGLandingFont {
     var contentTitle: UIFont?
     var contentSubtitle: UIFont?
+    var contentDescription: UIFont?
     var contentUsername: UIFont?
     var contentHeadline: UIFont?
     var contentCollectionTitle: UIFont?
     var collectionViewCellTitle: UIFont?
 }
 
-struct LandingImage:MGLandingImage {
+struct LandingImage: MGLandingImage {
     var userRightImage: UIImage
 }
 
-struct LandingColor:MGLandingColor {
+struct LandingColor: MGLandingColor {
     var navigationBar: UIColor
     var navigationBarContent: UIColor
     var toolBar: UIColor
     var toolBarContent: UIColor
     var view: UIColor
     var viewContent: UIColor
+    var title: UIColor
+    var subtitle: UIColor
+    var description: UIColor
     var collectionView: UIColor
     var collectionViewCell: UIColor
     var collectionViewCellContent: UIColor
